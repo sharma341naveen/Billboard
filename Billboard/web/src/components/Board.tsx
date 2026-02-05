@@ -1,0 +1,1 @@
+import React from "react";\n\nexport default function Board({ board }: { board: any }) {\n  return (\n    <div style={{ border: "1px solid #ddd", padding: 12, marginBottom: 12 }}>\n      <h2>{board.title}</h2>\n      {/* Render lists + tasks here with drag-and-drop */} \n    </div>\n  );\n}

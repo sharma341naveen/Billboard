@@ -1,0 +1,1 @@
+FROM node:20-alpine\nWORKDIR /usr/src/app\nCOPY package*.json ./\nRUN npm ci\nCOPY . .\nRUN npm run prisma:generate || true\nRUN npm run build || true\nEXPOSE 4000\nCMD ["npm", "run", "dev"]
