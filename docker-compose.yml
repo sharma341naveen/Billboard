@@ -1,0 +1,32 @@
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: billboard
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ./api
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+    
+
+  web:
+    build:
+      context: ./web
+    ports:
+      - "3000:4173"
+    depends_on:
+      - api
+    command: npm run preview
+
+volumes:
+  db-data:
